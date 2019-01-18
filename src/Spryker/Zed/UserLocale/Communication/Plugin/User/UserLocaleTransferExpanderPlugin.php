@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\UserLocale\Communication\Plugin;
+namespace Spryker\Zed\UserLocale\Communication\Plugin\User;
 
 use Generated\Shared\Transfer\UserTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -20,7 +20,7 @@ class UserLocaleTransferExpanderPlugin extends AbstractPlugin implements UserTra
 {
     /**
      * {@inheritdoc}
-     * - Expands UserTransfer with locale code.
+     * - Expand UserTransfer with Locale Id and Locale Name.
      *
      * @api
      *
@@ -30,14 +30,6 @@ class UserLocaleTransferExpanderPlugin extends AbstractPlugin implements UserTra
      */
     public function expandUserTransfer(UserTransfer $userTransfer): UserTransfer
     {
-        $userFkLocale = $userTransfer->getFkLocale();
-        if ($userFkLocale === null || $userTransfer->getLocaleCode() !== null) {
-            return $userTransfer;
-        }
-
-        $localeTransfer = $this->getFactory()->getLocaleFacade()->getLocaleById($userFkLocale);
-        $userTransfer->setLocaleCode($localeTransfer->getLocaleName());
-
-        return $userTransfer;
+        return $this->getFacade()->expandUserTransferWithLocale($userTransfer);
     }
 }

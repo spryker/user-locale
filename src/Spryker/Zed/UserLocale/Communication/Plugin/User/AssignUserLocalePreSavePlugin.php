@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\UserLocale\Communication\Plugin;
+namespace Spryker\Zed\UserLocale\Communication\Plugin\User;
 
 use Generated\Shared\Transfer\UserTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -20,6 +20,7 @@ class AssignUserLocalePreSavePlugin extends AbstractPlugin implements UserPreSav
 {
     /**
      * {@inheritdoc}
+     * - Expand UserTransfer with Locale Id and Locale Name.
      *
      * @api
      *
@@ -29,11 +30,6 @@ class AssignUserLocalePreSavePlugin extends AbstractPlugin implements UserPreSav
      */
     public function preSave(UserTransfer $userTransfer): UserTransfer
     {
-        if (!$userTransfer->getFkLocale()) {
-            $localeTransfer = $this->getFactory()->getLocaleFacade()->getLocale($this->getConfig()->getDefaultLocale());
-            $userTransfer->setFkLocale($localeTransfer->getIdLocale());
-        }
-
-        return $userTransfer;
+        return $this->getFacade()->expandUserTransferWithLocale($userTransfer);
     }
 }

@@ -7,9 +7,7 @@
 
 namespace Spryker\Zed\UserLocale\Dependency\Facade;
 
-use Generated\Shared\Transfer\LocaleTransfer;
-
-class UserLocaleToLocaleBridge implements UserLocaleToLocaleBridgeInterface
+class UserLocaleToLocaleFacadeBridge implements UserLocaleToLocaleFacadeBridgeInterface
 {
     /**
      * @var \Spryker\Zed\Locale\Business\LocaleFacadeInterface
@@ -29,7 +27,7 @@ class UserLocaleToLocaleBridge implements UserLocaleToLocaleBridgeInterface
      *
      * @return \Generated\Shared\Transfer\LocaleTransfer
      */
-    public function getLocaleById($idLocale): LocaleTransfer
+    public function getLocaleById($idLocale)
     {
         return $this->localeFacade->getLocaleById($idLocale);
     }
@@ -39,8 +37,18 @@ class UserLocaleToLocaleBridge implements UserLocaleToLocaleBridgeInterface
      *
      * @return \Generated\Shared\Transfer\LocaleTransfer
      */
-    public function getLocale($localeName): LocaleTransfer
+    public function getLocale($localeName)
     {
         return $this->localeFacade->getLocale($localeName);
+    }
+
+    /**
+     * @param string $localeName
+     *
+     * @return bool
+     */
+    public function hasLocale($localeName)
+    {
+        return $this->localeFacade->hasLocale($localeName);
     }
 }
