@@ -24,17 +24,11 @@ class UserLocaleToUserFacadeBridge implements UserLocaleToUserFacadeBridgeInterf
         $this->userFacade = $userFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function getCurrentUser(): UserTransfer
     {
         return $this->userFacade->getCurrentUser();
     }
 
-    /**
-     * @return bool
-     */
     public function hasCurrentUser(): bool
     {
         return $this->userFacade->hasCurrentUser();

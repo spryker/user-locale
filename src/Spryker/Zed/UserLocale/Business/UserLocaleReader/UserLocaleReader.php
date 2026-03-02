@@ -30,11 +30,6 @@ class UserLocaleReader implements UserLocaleReaderInterface
      */
     protected UserLocaleToStoreFacadeInterface $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToUserFacadeBridgeInterface $userFacade
-     * @param \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToLocaleFacadeBridgeInterface $localeFacade
-     * @param \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToStoreFacadeInterface $storeFacade
-     */
     public function __construct(
         UserLocaleToUserFacadeBridgeInterface $userFacade,
         UserLocaleToLocaleFacadeBridgeInterface $localeFacade,
@@ -45,9 +40,6 @@ class UserLocaleReader implements UserLocaleReaderInterface
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentUserLocaleTransfer(): LocaleTransfer
     {
         if (!$this->userFacade->hasCurrentUser()) {
@@ -57,27 +49,16 @@ class UserLocaleReader implements UserLocaleReaderInterface
         return $this->getLocaleTransferByLocaleName($this->getCurrentUser()->getLocaleName());
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function getLocaleTransferByLocaleName(string $localeName): LocaleTransfer
     {
         return $this->localeFacade->getLocale($localeName);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     protected function getCurrentUser(): UserTransfer
     {
         return $this->userFacade->getCurrentUser();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     protected function getCurrentLocale(): LocaleTransfer
     {
         $defaultLocaleIsoCode = $this->storeFacade->getCurrentStore(true)->getDefaultLocaleIsoCode();

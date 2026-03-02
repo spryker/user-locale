@@ -19,25 +19,16 @@ use Spryker\Zed\UserLocale\UserLocaleDependencyProvider;
  */
 class UserLocaleCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToLocaleFacadeBridgeInterface
-     */
     public function getLocaleFacade(): UserLocaleToLocaleFacadeBridgeInterface
     {
         return $this->getProvidedDependency(UserLocaleDependencyProvider::FACADE_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToUserFacadeBridgeInterface
-     */
     public function getUserFacade(): UserLocaleToUserFacadeBridgeInterface
     {
         return $this->getProvidedDependency(UserLocaleDependencyProvider::FACADE_USER);
     }
 
-    /**
-     * @return \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToStoreInterface
-     */
     public function getStore(): UserLocaleToStoreInterface
     {
         return $this->getProvidedDependency(UserLocaleDependencyProvider::STORE);

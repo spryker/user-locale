@@ -18,20 +18,12 @@ class UserExpander implements UserExpanderInterface
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\UserLocale\Dependency\Facade\UserLocaleToLocaleFacadeBridgeInterface $localeFacade
-     */
     public function __construct(
         UserLocaleToLocaleFacadeBridgeInterface $localeFacade
     ) {
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserTransfer $userTransfer
-     *
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function expandUserTransferWithLocale(UserTransfer $userTransfer): UserTransfer
     {
         $idLocale = $userTransfer->getFkLocale();
@@ -63,11 +55,6 @@ class UserExpander implements UserExpanderInterface
         return $userTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserCollectionTransfer $userCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\UserCollectionTransfer
-     */
     public function expandUserCollectionWithLocale(UserCollectionTransfer $userCollectionTransfer): UserCollectionTransfer
     {
         if (!$this->isMissingLocaleData($userCollectionTransfer)) {
@@ -101,11 +88,6 @@ class UserExpander implements UserExpanderInterface
         return $userCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UserCollectionTransfer $userCollectionTransfer
-     *
-     * @return bool
-     */
     protected function isMissingLocaleData(UserCollectionTransfer $userCollectionTransfer): bool
     {
         foreach ($userCollectionTransfer->getUsers() as $userTransfer) {

@@ -56,9 +56,6 @@ class UserLocalePlugin extends AbstractPlugin implements ApplicationPluginInterf
         return $container;
     }
 
-    /**
-     * @return string|null
-     */
     protected function getCurrentUserLocaleCode(): ?string
     {
         if (!$this->getFactory()->getUserFacade()->hasCurrentUser()) {

@@ -24,29 +24,16 @@ class UserLocaleToLocaleFacadeBridge implements UserLocaleToLocaleFacadeBridgeIn
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param int $idLocale
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getLocaleById(int $idLocale): LocaleTransfer
     {
         return $this->localeFacade->getLocaleById($idLocale);
     }
 
-    /**
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getLocale(string $localeName): LocaleTransfer
     {
         return $this->localeFacade->getLocale($localeName);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer
     {
         return $this->localeFacade->getCurrentLocale();

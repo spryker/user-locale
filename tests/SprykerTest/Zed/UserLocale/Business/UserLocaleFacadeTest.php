@@ -34,9 +34,6 @@ class UserLocaleFacadeTest extends Unit
      */
     protected UserLocaleBusinessTester $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandUserCollectionWithLocaleExpandsUserTransferWithCurrentLocaleWhenLocaleDataIsMissing(): void
     {
         // Arrange
@@ -60,9 +57,6 @@ class UserLocaleFacadeTest extends Unit
         $this->assertSame($localeTransfer->getLocaleNameOrFail(), $userTransfer->getLocaleName());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandUserCollectionWithLocaleExpandsUserTransferWithLocaleNameWhenFkLocaleIsSet(): void
     {
         // Arrange
@@ -86,9 +80,6 @@ class UserLocaleFacadeTest extends Unit
         $this->assertSame($localeTransfer->getLocaleNameOrFail(), $userTransfer->getLocaleName());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandUserCollectionWithLocaleExpandsUserTransferWithFkLocaleWhenLocaleNameIsSet(): void
     {
         // Arrange
@@ -112,9 +103,6 @@ class UserLocaleFacadeTest extends Unit
         $this->assertSame($localeTransfer->getLocaleNameOrFail(), $userTransfer->getLocaleName());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandUserCollectionWithLocaleDoesNothingWhenLocaleDataIsSet(): void
     {
         // Arrange

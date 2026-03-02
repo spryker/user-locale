@@ -11,13 +11,7 @@ use Generated\Shared\Transfer\UserTransfer;
 
 interface UserLocaleToUserFacadeBridgeInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\UserTransfer
-     */
     public function getCurrentUser(): UserTransfer;
 
-    /**
-     * @return bool
-     */
     public function hasCurrentUser(): bool;
 }
